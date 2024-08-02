@@ -506,7 +506,9 @@
                           "Day", "Month", "Year", 
                           "RenumberedAdres", 
                           "Address", "Place", "Country")
-  Adressen$RenumberedAdres[Adressen$RenumberedAdres=="V"] <- "v"
+  Adressen$RenumberedAdres <- ifelse(Adressen$RenumberedAdres=="V", "v", Adressen$RenumberedAdres)
+  Adressen$Address <- gsub('\\"', "'", Adressen$Address)
+  Adressen$Place <- gsub('\\"', "'", Adressen$Place)
   
   write.table(Adressen, file="Output/Adresses.csv", sep =",", col.names=T, row.names=F, fileEncoding="UTF-8")
   
@@ -519,6 +521,8 @@
                                ifelse(Occupations$Status=="o", "Employee", "Not known (or not relevant)"))
   Occupations$Occupation_title <- tolower(Occupations$Occupation_title)
   Occupations <- merge(Occupations, ref_occupation, by.x="Occupation_title", by.y="Original", all.x=T)
+  Occupations$Occupation_title <- gsub('\\"', "", Occupations$Occupation_title)
+  
   Occupations <- Occupations[,c("IDNR", "nr", 
                                 "Occupation_title", "Status",
                                 "HISCO", "STATUS", "RELATION", "PRODUCT",
@@ -528,6 +532,11 @@
                              "HISCO", "HISCO_status", "HISCO_relation", "HISCO_product",
                              "HISCLASS", "HISCAM_U1", "HISCAM_NL", "SOCPO", "OCC1950")
   write.table(Occupations, file="Output/Occupations.csv", sep =",", col.names=T, row.names=F, fileEncoding="UTF-8")
+  
+  
+  
+  
+  
   
   
   
