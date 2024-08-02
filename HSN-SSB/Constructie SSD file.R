@@ -508,7 +508,7 @@
                           "Address", "Place", "Country")
   Adressen$RenumberedAdres[Adressen$RenumberedAdres=="V"] <- "v"
   
-  write.table(Adressen, file="Output/adresses.csv", sep =",", col.names=T, row.names=F, fileEncoding="UTF-8")
+  write.table(Adressen, file="Output/Adresses.csv", sep =",", col.names=T, row.names=F, fileEncoding="UTF-8")
   
   
   Occupations <- pkbrp[,c("IDNR", "VGNRBRP",
@@ -527,7 +527,7 @@
                              "Occupation_title", "Status",
                              "HISCO", "HISCO_status", "HISCO_relation", "HISCO_product",
                              "HISCLASS", "HISCAM_U1", "HISCAM_NL", "SOCPO", "OCC1950")
-  write.table(Occupations, file="Output/occupations.csv", sep =",", col.names=T, row.names=F, fileEncoding="UTF-8")
+  write.table(Occupations, file="Output/Occupations.csv", sep =",", col.names=T, row.names=F, fileEncoding="UTF-8")
   
   
   
